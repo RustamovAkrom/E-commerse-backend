@@ -1,0 +1,11 @@
+image: python:3.9
+
+pipelines:
+  default:
+    - step:
+        name: Build and Test
+        caches:
+          - pip
+        script: 
+          - pip install -r requirements.txt
+          - python manage.py test
