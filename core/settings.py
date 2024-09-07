@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 from core.config import DJANGO_DEFAULT_APPS, PROJECT_APPS, THIRTY_PARTY_APPS
 
+from django.utils.translation import gettext_lazy
+
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +22,7 @@ INSTALLED_APPS = DJANGO_DEFAULT_APPS + PROJECT_APPS + THIRTY_PARTY_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -80,6 +83,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+def gettext(_: str):
+    return gettext_lazy(_)
+
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Asia/Tashkent"
@@ -87,6 +95,13 @@ TIME_ZONE = "Asia/Tashkent"
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ("en", gettext("English")),
+    ("uz", gettext("Uzbek")),
+]
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR.joinpath("staticfiles")

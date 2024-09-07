@@ -11,4 +11,6 @@ PROJECT_APPS = [
     "apps.shared.apps.SharedConfig",
 ]
 
-THIRTY_PARTY_APPS = []
+THIRTY_PARTY_APPS = [
+    "modeltranslation",
+]
