@@ -6,7 +6,9 @@ DJANGO_DEFAULT_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 PROJECT_APPS = [
     "apps.shared.apps.SharedConfig",
 ]
+
 THIRTY_PARTY_APPS = []

@@ -2,7 +2,12 @@ from pathlib import Path
 import os
 
 from dotenv import load_dotenv
-from core.config import *
+
+from core.config import (
+    DJANGO_DEFAULT_APPS,
+    PROJECT_APPS,
+    THIRTY_PARTY_APPS
+)
 
 load_dotenv()
 
