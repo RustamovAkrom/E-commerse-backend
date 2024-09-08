@@ -20,7 +20,7 @@ class TimestempedAbstractModel(models.Model):
 class SlugstempedAbstractModel(models.Model):
     slug = models.CharField(
         verbose_name=_("URL"),
-        max_length=255, 
+        max_length=255,
         unique=True
     )
 
