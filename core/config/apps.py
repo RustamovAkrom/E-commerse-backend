@@ -10,6 +10,7 @@ DJANGO_DEFAULT_APPS = [
 PROJECT_APPS = [
     "apps.shared.apps.SharedConfig",
     "apps.shop.apps.ShopConfig",
+    "apps.orders.apps.OrdersConfig",
 ]
 
 THIRTY_PARTY_APPS = [
