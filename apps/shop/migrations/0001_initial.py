@@ -15,41 +15,102 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
-                ('slug', models.CharField(max_length=255, unique=True, verbose_name='URL')),
-                ('name', models.CharField(help_text='Required and unique', max_length=255, unique=True, verbose_name='Category Name')),
-                ('is_active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "slug",
+                    models.CharField(max_length=255, unique=True, verbose_name="URL"),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        help_text="Required and unique",
+                        max_length=255,
+                        unique=True,
+                        verbose_name="Category Name",
+                    ),
+                ),
+                ("is_active", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Category',
-                'verbose_name_plural': 'Categories',
+                "verbose_name": "Category",
+                "verbose_name_plural": "Categories",
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
-                ('slug', models.CharField(max_length=255, unique=True, verbose_name='URL')),
-                ('title', models.CharField(max_length=255)),
-                ('author', models.CharField(default='admin', max_length=255)),
-                ('description', models.TextField(blank=True)),
-                ('image', models.ImageField(default='images/default.png', upload_to='images/')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('is_stock', models.BooleanField(default=True)),
-                ('is_active', models.BooleanField(default=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='product', to='shop.category')),
-                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='product_creator', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "slug",
+                    models.CharField(max_length=255, unique=True, verbose_name="URL"),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("author", models.CharField(default="admin", max_length=255)),
+                ("description", models.TextField(blank=True)),
+                (
+                    "image",
+                    models.ImageField(
+                        default="images/default.png", upload_to="images/"
+                    ),
+                ),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("is_stock", models.BooleanField(default=True)),
+                ("is_active", models.BooleanField(default=True)),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="product",
+                        to="shop.category",
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="product_creator",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Product',
-                'verbose_name_plural': 'Products',
-                'ordering': ('-created_at',),
+                "verbose_name": "Product",
+                "verbose_name_plural": "Products",
+                "ordering": ("-created_at",),
             },
         ),
     ]

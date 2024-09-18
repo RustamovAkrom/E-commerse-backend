@@ -12,7 +12,7 @@ class ProductManager(models.Manager):
 class CategoryManager(models.Manager):
     def get_queryset(self):
         return super(CategoryManager, self).get_queryset().filter(is_active=True)
-    
+
 
 class Category(TimestempedAbstractModel, SlugstempedAbstractModel):
     """
@@ -78,7 +78,7 @@ class Contact(TimestempedAbstractModel):
     class Meta:
         verbose_name = _("Contact")
         verbose_name_plural = _("Contacts")
-        ordering = ("-created_at", )
+        ordering = ("-created_at",)
 
     def __str__(self) -> str:
         return self.name
