@@ -2,21 +2,12 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.db import models  # noqa
 from apps.shared.models import SlugstempedAbstractModel, TimestempedAbstractModel
-
-
-class ProductManager(models.Manager):
-    def get_queryset(self):
-        return super(ProductManager, self).get_queryset().filter(is_active=True)
-
-
-class CategoryManager(models.Manager):
-    def get_queryset(self):
-        return super(CategoryManager, self).get_queryset().filter(is_active=True)
+from .managers import ProductManager, CategoryManager
 
 
 class Category(TimestempedAbstractModel, SlugstempedAbstractModel):
     """
-    Category Table implimented with MPTT.
+    Category Table.
     """
 
     name = models.CharField(
@@ -40,6 +31,10 @@ class Category(TimestempedAbstractModel, SlugstempedAbstractModel):
 
 
 class Product(TimestempedAbstractModel, SlugstempedAbstractModel):
+    """
+    Product Table.
+    """
+
     category = models.ForeignKey(
         Category, related_name="product", on_delete=models.CASCADE
     )
@@ -70,6 +65,10 @@ class Product(TimestempedAbstractModel, SlugstempedAbstractModel):
 
 
 class Contact(TimestempedAbstractModel):
+    """
+    Contact Table.
+    """
+    
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=100)
