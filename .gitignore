@@ -1,5 +1,40 @@
+# Python файлы
+*.pyc
+*.pyo
+*.pyd
 __pycache__/
-.env
-readme-md.md
+*.env
+
 docs/
-db.sqlite3
+
+# Логи
+*.log
+
+# Среда виртуальных окружений
+venv/
+env/
+ENV/
+
+# Конфигурационные файлы IDE
+.vscode/
+.idea/
+
+# Базы данных
+*.sqlite3
+*.db
+
+# Статические файлы (для Django)
+staticfiles/
+
+# Миграции (если не нужно добавлять их)
+*/migrations/*
+
+# Docker файлы
+*.pid
+docker-compose.override.yml
+
+# Celery
+celerybeat-schedule
+
+# MacOS файлы
+.DS_Store

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+            
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Contacts</h1>
+      <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+      <button class="btn btn-primary btn-lg" type="button">Example button</button>
+    </div>
+  </div>
+
+  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+        <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <!-- Social contacts -->
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form class="p-4 p-md-5 border rounded-3 bg-light">
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Name">
+            <label for="floatingInput">Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Subject">
+            <label for="floatingInput">Subject</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea class="form-control mb-3" placeholder="Message"></textarea>
+            <label for="floatingInput">Message</label>
+          </div>
+
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+          <hr class="my-4">
+          <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

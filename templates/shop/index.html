@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Shop {% endblock %}
+
+{% block content %}
+<div>
+    <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg> -->
+          <img src="{% static 'assets/img/posts/slider_img3.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" alt="">
+
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg> -->
+          <img src="{% static 'assets/img/posts/slider_img2.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item active">
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg> -->
+          <img src="{% static 'assets/img/posts/slider_img1.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" alt="">
+
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    </div>
+  </div>
+  
+  <!-- Why Shop With Us -->
+  <div class="container-fluid px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Why Shop With Us</h2>
+
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-center">
+            <a href="" class="nav-link text-white">
+              <p class="display-1"><i class="bi bi-truck"></i></p>
+              <h2 class="mb-5 display-6 fw-bold">Fast Delevery</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-center">
+            <a href="" class="nav-link text-white">
+              <p class="display-1"><i class="bi bi-lock"></i></p>
+              <h2 class="mb-5 display-6 lh-1 fw-bold">Secure payment</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-center">
+            <a href="" class="nav-link text-white">
+              <p class="display-1"><i class="bi bi-gift"></i></p>
+              <h2 class="mb-5 display-6 lh-1 fw-bold">New products</h2>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Products header title -->
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">
+      Populated Products
+    </h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <!-- <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <span data-feather="calendar"></span>
+        This week
+      </button> -->
+    </div>
+  </div>
+
+  <!-- Populated Products -->
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p1.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p2.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="assets/img/products/p3.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p4.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p5.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p6.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p7.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p8.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="./single-product.html">
+              <img src="./assets/img/products/p9.png" class="bd-placeholder-img card-img-top bg-light" width="100%" height="225"></img>
+            </a>                          
+            <div class="card-body">
+              <a href="./single-product.html" class="text-dark">
+                <h4>Product name</h4>
+              </a>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success">$10000</span>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsive Image -->
+  <!-- <div class="bd-example">
+    <img src="/assets/img/banner-down.jpg" class="bd-placeholder-img bd-placeholder-img-lg img-fluid" width="100%" height="250"></svg>
+    </div>
+  </div> -->
+
+  <!-- Populated posts -->
+  <div class="containe-fluid mt-5">
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+      Populated posts
+    </h3>
+
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">World</strong>
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="./blog-detail.html" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+  
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">Post title</h3>
+            <div class="mb-1 text-muted">Nov 11</div>
+            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="./blog-detail.html" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+  
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">World</strong>
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="./blog-detail.html" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+  
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">Post title</h3>
+            <div class="mb-1 text-muted">Nov 11</div>
+            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            <a href="./blog-detail.html" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
