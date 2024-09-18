@@ -9,6 +9,11 @@ class ProductManager(models.Manager):
         return super(ProductManager, self).get_queryset().filter(is_active=True)
 
 
+class CategoryManager(models.Manager):
+    def get_queryset(self):
+        return super(CategoryManager, self).get_queryset().filter(is_active=True)
+    
+
 class Category(TimestempedAbstractModel, SlugstempedAbstractModel):
     """
     Category Table implimented with MPTT.
@@ -21,6 +26,10 @@ class Category(TimestempedAbstractModel, SlugstempedAbstractModel):
         unique=True,
     )
     is_active = models.BooleanField(default=True)
+
+    # Managers
+    objects = models.Manager()
+    categories = CategoryManager()
 
     class Meta:
         verbose_name = _("Category")
@@ -46,6 +55,8 @@ class Product(TimestempedAbstractModel, SlugstempedAbstractModel):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     is_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
+
+    # Managers
     objects = models.Manager()
     products = ProductManager()
 
