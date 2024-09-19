@@ -5,7 +5,7 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
@@ -14,15 +14,17 @@ class CustomUser(AbstractUser):
 
     def __str__(self) -> str:
         return self.username
-    
+
 
 class UserProfile(models.Model):
     GENDER_CHOICE = [
-        ('male', 'Male'),
-        ('female', 'Female'),
+        ("male", "Male"),
+        ("female", "Female"),
     ]
 
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(
+        CustomUser, on_delete=models.CASCADE, related_name="profile"
+    )
     bio = models.TextField(blank=True, null=True)
     date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICE, blank=True)
@@ -33,4 +35,3 @@ class UserProfile(models.Model):
 
     def __str__(self) -> str:
         return f"{self.user.username}`s Profile"
-    
