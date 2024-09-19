@@ -64,6 +64,24 @@ class Product(TimestempedAbstractModel, SlugstempedAbstractModel):
         return self.title
 
 
+class ProductImage(TimestempedAbstractModel, SlugstempedAbstractModel):
+    """
+    Product Image Table.
+    """
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_image")
+    image = models.ImageField(upload_to="images/", default="images/default.png")
+    alt_text = models.CharField(max_length=255, blank=True, null=True)
+    is_feature = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = _("Product Image")
+        verbose_name_plural = _("Product Images")
+
+    def __str__(self) -> str:
+        return self.image.url
+    
+    
 class Contact(TimestempedAbstractModel):
     """
     Contact Table.
