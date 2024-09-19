@@ -11,6 +11,7 @@ PROJECT_APPS = [
     "apps.shared.apps.SharedConfig",
     "apps.shop.apps.ShopConfig",
     "apps.orders.apps.OrdersConfig",
+    "apps.account.apps.AccountConfig",
 ]
 
 THIRTY_PARTY_APPS = [

@@ -34,6 +34,5 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'bio',
-        'date_of_berth',
-        'website',
+        'date_of_birth',
     ]
