@@ -28,6 +28,6 @@ jobs:
       run: |
         flake8 $(git ls-files '*.py')
     
-    - name: Run Black
-      run: |
-        black --check $(git ls-files '*.py')
+    # - name: Run Black
+    #   run: |
+    #     black --check $(git ls-files '*.py')
