@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.db import models  # noqa
+from django.db import models
 from apps.shared.models import SlugstempedAbstractModel, TimestempedAbstractModel
 from mptt.models import MPTTModel, TreeForeignKey
 from .managers import ProductManager, CategoryManager
