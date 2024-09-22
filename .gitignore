@@ -5,8 +5,10 @@
 __pycache__/
 *.env
 
+# Project fayles
 docs/
 E-commerse-Frontnd/
+commit_emojis
 
 # Логи
 *.log
