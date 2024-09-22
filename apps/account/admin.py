@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import CustomUser, UserProfile, Address
+
+from .models import Address, CustomUser, UserProfile
 
 
 @admin.register(CustomUser)
@@ -10,7 +11,6 @@ class CustomUserAdmin(admin.ModelAdmin):
         "last_name",
         "email",
         "phone_number",
-        "avatar",
         "is_active",
     ]
     list_filter = ["username", "first_name", "last_name", "email", "phone_number"]
@@ -20,6 +20,7 @@ class CustomUserAdmin(admin.ModelAdmin):
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = [
+        "avatar",
         "user",
         "bio",
         "date_of_birth",

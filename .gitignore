@@ -7,8 +7,9 @@ __pycache__/
 
 # Project fayles
 docs/
-E-commerse-Frontnd/
+Frontnd/
 commit_emojis
+word.py
 
 # Логи
 *.log

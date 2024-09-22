@@ -1,14 +1,15 @@
 import uuid
 
 from django.contrib.auth.models import AbstractUser
-from django.utils.translation import gettext_lazy as _
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 from apps.shared.models import TimestempedAbstractModel
 
 
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
-    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
+    email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
@@ -35,6 +36,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, related_name="profile"
     )
+    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICE, blank=True)
