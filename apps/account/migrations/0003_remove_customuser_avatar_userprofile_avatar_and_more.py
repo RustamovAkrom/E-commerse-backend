@@ -6,22 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0002_address'),
+        ("account", "0002_address"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='customuser',
-            name='avatar',
+            model_name="customuser",
+            name="avatar",
         ),
         migrations.AddField(
-            model_name='userprofile',
-            name='avatar',
-            field=models.ImageField(blank=True, null=True, upload_to='avatars/'),
+            model_name="userprofile",
+            name="avatar",
+            field=models.ImageField(blank=True, null=True, upload_to="avatars/"),
         ),
         migrations.AlterField(
-            model_name='customuser',
-            name='email',
+            model_name="customuser",
+            name="email",
             field=models.EmailField(max_length=254, unique=True),
         ),
     ]
