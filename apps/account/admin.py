@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, UserProfile
+from .models import CustomUser, UserProfile, Address
 
 
 @admin.register(CustomUser)
@@ -24,3 +24,8 @@ class UserProfileAdmin(admin.ModelAdmin):
         "bio",
         "date_of_birth",
     ]
+
+
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    pass

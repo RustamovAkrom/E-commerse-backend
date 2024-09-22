@@ -12,6 +12,8 @@ PROJECT_APPS = [
     "apps.shop.apps.ShopConfig",
     "apps.orders.apps.OrdersConfig",
     "apps.account.apps.AccountConfig",
+    "apps.cart.apps.CartConfig",
+    "apps.checkout.apps.CheckoutConfig",
 ]
 
 THIRTY_PARTY_APPS = [
