@@ -1,4 +1,4 @@
-Django==5.1.1
+django==5.1.1
 python-dotenv==1.0.1
 django-modeltranslation==0.19.9
 django-mptt==0.16.0
