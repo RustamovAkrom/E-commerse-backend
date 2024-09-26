@@ -115,7 +115,7 @@
                 </h6>
                 <ul class="nav flex-column mb-2">
                   <li class="nav-item">
-                    <a class="nav-link" href="./profile.html">
+                    <a class="nav-link" href="{% url 'account:profile' request.user %}">
                       <span data-feather="file-text"></span>
                       Profile
                     </a>
@@ -126,25 +126,29 @@
                       Settings
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./login.html">
-                      <span data-feather="file-text">
-                      </span>
-                      Log-in
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./register.html">
-                      <span data-feather="file-text"></span>
-                      Register
-                    </a>
-                  </li>
+
+                  {% if request.user.is_authenticated %}
                   <li class="nav-item">
                     <form action="#" method="post" class="">
                       <span data-feather="file-text"></span>
                       <button type="submit" class="nav-link btn btn-outline-white">Log-out</button>
                     </form>
                   </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:login' %}">
+                      <span data-feather="file-text">
+                      </span>
+                      Log-in
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:register' %}">
+                      <span data-feather="file-text"></span>
+                      Register
+                    </a>
+                  </li>
+                  {% endif %}
                 </ul>
             </div>
           </nav>

@@ -52,3 +52,7 @@ def logout_user(request):
     logout(request)
     messages.success(request, f"Successfully loged out - ✅")
     return redirect("account:login")
+
+
+def profile_user(request, username):
+    return render(request, "account/profile.html")
