@@ -3,6 +3,4 @@ from . import views
 
 app_name = "coupon"
 
-urlpatterns = [
-    path('apply/', views.coupon_apply, name='apply')
-]
+urlpatterns = [path("apply/", views.coupon_apply, name="apply")]

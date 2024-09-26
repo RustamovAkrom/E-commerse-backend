@@ -16,13 +16,9 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
     return render(
-        request, 
-        "shop/shop.html", 
-        {
-            "products": products,
-            "categories": categories,
-            "category": category
-        }
+        request,
+        "shop/shop.html",
+        {"products": products, "categories": categories, "category": category},
     )
 
 
@@ -30,12 +26,9 @@ def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     cart_product_form = CartAddProductForm()
     return render(
-        request, 
-        "shop/single.html", 
-        {
-            "product": product,
-            "cart_product_form": cart_product_form
-        }
+        request,
+        "shop/single.html",
+        {"product": product, "cart_product_form": cart_product_form},
     )
 
 
