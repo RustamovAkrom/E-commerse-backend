@@ -114,3 +114,5 @@ MEDIA_ROOT = BASE_DIR.joinpath("media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "account.CustomUser"
+
+CART_SESSION_ID = "cart"
