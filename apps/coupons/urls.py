@@ -1,3 +1,8 @@
 from django.urls import path
+from . import views
 
-urlpatterns = []
+app_name = "coupon"
+
+urlpatterns = [
+    path('apply/', views.coupon_apply, name='apply')
+]
