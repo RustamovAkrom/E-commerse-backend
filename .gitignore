@@ -10,6 +10,8 @@ docs/
 Frontend-example/
 commit_emojis
 word.py
+media/
+
 
 # Логи
 *.log

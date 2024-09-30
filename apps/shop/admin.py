@@ -24,6 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
         "title",
         "slug",
         "category",
+        "product_type",
         "description",
         "regular_price",
         "discount_price",
