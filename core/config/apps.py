@@ -13,8 +13,8 @@ PROJECT_APPS = [
     "apps.orders.apps.OrdersConfig",
     "apps.account.apps.AccountConfig",
     "apps.cart.apps.CartConfig",
-    "apps.checkout.apps.CheckoutConfig",
     "apps.coupons.apps.CouponsConfig",
+    "apps.payment.apps.PaymentConfig",
 ]
 
 THIRTY_PARTY_APPS = [
