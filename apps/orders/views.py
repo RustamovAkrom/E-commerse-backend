@@ -24,18 +24,24 @@ def order_create(request):
                     price=item["price"],
                     quantity=item["quantity"],
                 )
+            # clear the cart
             cart.clear()
+            # Launch asynchronous task
             order_created(order.id)
+            # set the order in the session
             request.session["order_id"] = order.id
+            # redirect for payment
             messages.success(request, "Successfully placed order")
-            return redirect("payment.process")
+            return redirect("payment:process")
+        messages.error(request, "Your field are not valid")
+
+    else:
+        form = OrderCreateForm()
+
+    return render(request, "orders/order/create.html", {"cart": cart, "form": form})
 
 
-def payment_confirmation(data):
-    Order.objects.filter(order_key=data).update(billing_status=True)
-
-
-def user_orders(request):
-    user_id = request.user.id
-    orders = Order.objects.filter(user=user_id).filter(billing_status=True)
-    return orders
+@staff_member_required
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, "admin/orders/order/detail.html", {"order": order})
