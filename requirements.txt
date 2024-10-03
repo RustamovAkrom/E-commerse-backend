@@ -13,7 +13,7 @@ django
 django-js-asset==2.2.0
 django-localflavor==4.0
 django-modeltranslation==0.19.9
-django-mptt==0.16.0
+django-mptt
 gunicorn==23.0.0
 idna==3.10
 kombu==5.4.2
