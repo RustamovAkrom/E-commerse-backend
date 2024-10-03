@@ -80,24 +80,24 @@
                     Contact
                   </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="./blog.html">
                     <span data-feather="bar-chart-2">
                       <i class="bi bi-grid"></i>
                     </span>
                     Blog
                   </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                  <a class="nav-link" href="./cart.html">
+                  <a class="nav-link" href="{% url 'cart:cart_detail' %}">
                     <span data-feather="bar-chart-2">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-cart">Cart</i>
                     </span>
-                    Cart (3)
+                    {{ cart|length }}
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./checkout.html">
+                  <a class="nav-link" href="{% url 'orders:order_create' %}">
                     <span data-feather="bar-chart-2">
                       <i class="bi bi-bag-check"></i>
                     </span>

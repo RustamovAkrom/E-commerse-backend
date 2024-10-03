@@ -1,124 +1,77 @@
 from decimal import Decimal
-
 from django.conf import settings
-
-from apps.checkout.models import DeliveryOptions
 from apps.shop.models import Product
 from apps.coupons.models import Coupon
 
 
 class Cart:
-    """
-    A base Cart class, Providing some default bahvariors that
-    can ve inherited or overrided, as necassary.
-    """
-
     def __init__(self, request):
+        """
+        Initialize the cart.
+        """
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
-        if settings.CART_SESSION_ID not in request.session:
+        if not cart:
+            # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
-        # shop current applied coupon
+        # store current applied coupon
         self.coupon_id = self.session.get("coupon_id")
 
-    def add(self, product, qty):
+    def add(self, product, quantity=1, override_quantity=False):
         """
-        Adding and updating the users cart session data
+        Add a product to the cart or update its quantity.
         """
         product_id = str(product.id)
-
-        if product_id in self.cart:
-            self.cart[product_id]["qty"] = qty
+        if product_id not in self.cart:
+            self.cart[product_id] = {"quantity": 0, "price": str(product.regular_price)}
+        if override_quantity:
+            self.cart[product_id]["quantity"] = quantity
         else:
-            self.cart[product_id] = {"price": str(product.price), "qty": qty}
-
+            self.cart[product_id]["quantity"] += quantity
         self.save()
+
+    def save(self):
+        # mark the session as "modified" to make sure it gets saved
+        self.session.modified = True
+
+    def remove(self, product):
+        """
+        Remove a product from the cart.
+        """
+        product_id = str(product.id)
+        if product_id in self.cart:
+            del self.cart[product_id]
+            self.save()
 
     def __iter__(self):
         """
-        Collect the product_id in the session data to query the database
-        and retur products
+        Iterate over the items in the cart and get the products
+        from the database.
         """
-
         product_ids = self.cart.keys()
+        # get the product objects and add them to the cart
         products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()
-
         for product in products:
             cart[str(product.id)]["product"] = product
-
         for item in cart.values():
             item["price"] = Decimal(item["price"])
-            item["total_price"] = item["price"] * item["qty"]
+            item["total_price"] = item["price"] * item["quantity"]
             yield item
 
     def __len__(self):
         """
-        Get the cart data and count the qty of items
+        Count all items in the cart.
         """
-        return sum(item["qty"] for item in self.cart.values())
-
-    def update(self, product, qty):
-        """
-        Update values in session data
-        """
-        product_id = str(product.id)
-        if product_id in self.cart:
-            self.cart[product_id]["qty"] = qty
-        self.save()
-
-    def get_subtotal_price(self):
-        return sum(Decimal(item["price"] * item["qty"] for item in self.cart.values()))
-
-    def get_delivery_price(self):
-        newprice = 0.00
-
-        if "purchase" in self.session:
-            newprice = DeliveryOptions.objects.get(
-                id=self.session["purchase"]["delivery_id"]
-            ).delivery_pricel
-
-        return newprice
+        return sum(item["quantity"] for item in self.cart.values())
 
     def get_total_price(self):
-        newprice = 0.00
-        subtotal = self.get_subtotal_price()
-
-        if "purchase" in self.session:
-            newprice = DeliveryOptions.objects.get(
-                id=self.session["purchase"]["delivery_id"]
-            ).delivery_price
-
-        total = subtotal + Decimal(newprice)
-        return total
-
-    def cart_update_delivery(self, deliveryprice=0):
-        subtotal = self.get_subtotal_price()
-        total = subtotal + Decimal(deliveryprice)
-        return total
-
-    def delete(self, product):
-        """
-        Delte item from session data
-        """
-        product_id = str(product.id)
-
-        if product_id in self.session:
-            del self.session[product_id]
-            self.save()
+        return sum([item["total_price"] for item in self])
 
     def clear(self):
-        """
-        Remove Cart from session
-        """
         del self.session[settings.CART_SESSION_ID]
-        # del self.session["address"]
-        # del self.session["purchase"]
         self.save()
-
-    def save(self):
-        self.session.modified = True
 
     @property
     def coupon(self):
@@ -131,7 +84,7 @@ class Cart:
 
     def get_discount(self):
         if self.coupon:
-            return self.coupon.discount / Decimal(100) * self.get_total_price()
+            return (self.coupon.discount / Decimal(100)) * self.get_total_price()
         return Decimal(0)
 
     def get_total_price_after_discount(self):

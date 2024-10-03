@@ -116,3 +116,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "account.CustomUser"
 
 CART_SESSION_ID = "cart"
+
+STRIPE_API_KEY = None
+STRIPE_API_VERSION = None

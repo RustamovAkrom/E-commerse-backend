@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Shopping Cart {% endblock %}
+
+{% block content %}
+<!-- Cart header -->
+<div class="py-5 text-center">
+  <!-- <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+  <h2>Cart form</h2>
+  <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+</div>
+
+<div>
+  <h3 class="pb-4 mb-4 fst-italic border-bottom">
+    Shopping Cart
+  </h3>
+
+  <!-- Carts -->
+  <article class="blog-post img-fluid">
+
+      <table class="table">
+        <thead class="bg-dark text-white">
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart %}
+          {% with product=item.product %}
+            <div class="nav-item">
+              <tr>
+                <td>
+                  <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger">X</button>
+                  </form>
+                </td>
+                <td>
+                  <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.product_image.first }}" width="80" height="80" class="">
+                  </a>
+                </td>
+                <td>
+                  <strong>{{ item.product.title }}</strong></td>
+                <td>
+                  <h5>${{ item.product.regular_price }}</h5>
+                </td>
+                <td>
+                  <form action="{% url 'cart:cart_add' product.id %}" method="post" class="d-flex">
+                    <!-- <input type="number" value="1" min="1" max="100"> -->
+                     {{ item.update_quantity_form.quantity }}
+                     {{ item.update_quantity_form.override }}
+                     {% csrf_token %}
+                    <div class="ms-3">
+                      <button type="submit" class="btn btn-secondary">Update</button>
+                    </div>
+                  </form>
+                </td>
+                <td>
+                  <h5>${{ item.total_price }}</h5>
+                </td>
+              </tr>
+            </div>
+          {% endwith %}
+          {% endfor %}
+          {% if cart.coupon %}
+          <tr>
+              <th scope="col" colspan="5">Subtotal</th>
+              <th scope="col">
+                  <strong class="d-inline-block mb-2 text-success">${{ cart.get_total_price|floatformat:2 }}</strong>
+              </th>
+          </tr>
+          <tr>
+              <th scope="col" colspan="5">
+                  "{{ cart.coupon.code }}" coupon
+                  ({{ cart.coupon.discount }}% off)
+              </th>
+              <th scope="col">
+                  <strong class="d-inline-block mb-2 text-danger">- ${{ cart.get_discount|floatformat:2 }}</strong>
+              </th>
+          </tr>
+          {% endif %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><h5>Totals</h5></td>
+            <td colspan="4"></td>
+            <td><h4><b style="color:green;">${{ cart.get_total_price_after_discount|floatformat:2 }}</b></h4></td>
+          </tr>
+        </tfoot>
+      </table>
+    </article>
+    
+    <!-- Coupon form and continune, checkout buttons -->
+    <div class="d-flex">           
+      <form class="card p-2" action="{% url 'coupon:apply' %}" method="post">
+        <div class="input-group">
+          {{ coupon_apply_form.code }}
+          {% csrf_token %}
+          <!-- <input type="text" class="form-control me-2" placeholder="Promo code"> -->
+          <button type="submit" class="btn btn-secondary">Apply a coupon</button>
+        </div>
+      </form>
+      <div class="d-flex ms-5">
+        <div class="p-1">
+          <a href="{% url 'shop:home' %}" class="btn btn-outline-secondary">Continune</a>
+        </div>
+        <div class="p-1">
+          <a href="{% url 'orders:order_create' %}" class="btn btn-outline-primary">Checkout</a>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

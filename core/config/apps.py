@@ -19,4 +19,5 @@ PROJECT_APPS = [
 
 THIRTY_PARTY_APPS = [
     "modeltranslation",
+    "localflavor",
 ]

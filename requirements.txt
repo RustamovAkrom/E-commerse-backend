@@ -1,6 +1,8 @@
-django
+Django==5.1.1
 python-dotenv==1.0.1
 django-modeltranslation==0.19.9
-django-mptt
+django-mptt==0.16.0
 pillow==10.4.0
-stripe
+stripe==11.0.0
+django-localflavor==4.0
+celery==5.4.0

@@ -3,4 +3,82 @@
 {% block title %} Pay your order {% endblock %}
 
 {% block content %}
+<div>
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+      Shopping Cart
+    </h3>
+  
+    <!-- Carts -->
+    <article class="blog-post img-fluid">
+  
+        <div class="nav-item">
+                </div><table class="table">
+          <thead class="bg-dark text-white">
+            <tr>
+              <th>Image</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in order.items.all %}
+              <tr>
+                  <td>
+                    <a href="{{ item.product.get_absolute_url }}">
+                      <img src="{{ item.product.product_image.first }}" width="80" height="80" class="">
+                    </a>
+                  </td>
+                  <td>
+                    <strong>{{ item.product.title }}</strong></td>
+                  <td>
+                    <h5>${{ item.product.price }}</h5>
+                  </td>
+                  <td>
+                    {{ item.quantity }}
+                  </td>
+                  <td>
+                    <h5>${{ item.get_cost  }}</h5>
+                  </td>
+                </tr>
+                {% if order.coupon %}
+                <tr>
+                    <td>Subtotal</td>
+                    <td colspan="3"></td>
+                    <td>${{ order.get_total_cost_before_discount|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        "{{ order.coupon.code }}" coupon
+                        ({{ order.discount }}% off)
+                    </td>
+                    <td colspan="3"></td>
+                    <td>                        
+                        <strong class="d-inline-block mb-2 text-danger">- ${{ order.get_discount|floatformat:2 }}</strong>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><h5>Totals</h5></td>
+              <td colspan="3"></td>
+              <td><h4><b style="color:green;">${{ order.get_total_cost|floatformat:2 }}</b></h4></td>
+            </tr>
+          </tfoot>
+        </table>
+      </article>
+      
+
+        <div class="text-right">
+            <form action="{% url 'payment:process' %}" method="post">
+                <input type="submit" value="Pay now" class="btn btn-outline-primary">
+                {% csrf_token %}
+            </form>
+        </div>
+
+      </div>
+  </div>
 {% endblock %}

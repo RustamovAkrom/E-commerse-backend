@@ -8,11 +8,12 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("account/", include("apps.account.urls")),
-    # path("cart/", include("apps.cart.urls")),
-    # path("checkout/", include("apps.checkout.urls")),
-    # path("orders/",include("apps.orders.urls")),
-    path("", include("apps.shop.urls")),
+    path("account/", include("apps.account.urls", namespace="account")),
+    path("cart/", include("apps.cart.urls", namespace="cart")),
+    path("payment/", include("apps.payment.urls", namespace="payment")),
+    path("coupons/", include("apps.coupons.urls", namespace="coupons")),
+    path("orders/",include("apps.orders.urls", namespace="orders")),
+    path("", include("apps.shop.urls", namespace="shop")),
 ]
 
 if settings.DEBUG:
