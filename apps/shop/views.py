@@ -30,9 +30,9 @@ def product_detail(request, slug):
         request,
         "shop/single.html",
         {
-            "product": product, 
+            "product": product,
             "products": products,
-            "cart_product_form": cart_product_form
+            "cart_product_form": cart_product_form,
         },
     )
 

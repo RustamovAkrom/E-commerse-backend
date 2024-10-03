@@ -18,7 +18,9 @@ class Order(TimestempedAbstractModel):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=20)
     country_code = models.CharField(max_length=4, blank=True)
-    coupon = models.ForeignKey(Coupon, related_name="orders", blank=True, null=True, on_delete=models.SET_NULL)
+    coupon = models.ForeignKey(
+        Coupon, related_name="orders", blank=True, null=True, on_delete=models.SET_NULL
+    )
     discount = models.IntegerField(
         default=0, validators=[MaxValueValidator(0), MinValueValidator(100)]
     )
@@ -33,7 +35,7 @@ class Order(TimestempedAbstractModel):
     def get_total_cost(self):
         total_cost = self.get_total_cost_before_discount()
         return total_cost - self.get_discount()
-    
+
     def get_stripe_url(self):
         if not self.stripe_id:
             # not payment associated

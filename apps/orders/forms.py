@@ -5,72 +5,80 @@ from .models import Order
 
 class OrderCreateForm(forms.ModelForm):
     # postal_code = USZipCodeField()
-    
+
     class Meta:
         model = Order
-        fields = ("full_name", "email", "address1", "address2", "city", "postal_code", "country_code")
+        fields = (
+            "full_name",
+            "email",
+            "address1",
+            "address2",
+            "city",
+            "postal_code",
+            "country_code",
+        )
         widgets = {
             "full_name": forms.TextInput(
                 attrs={
                     "type": "text",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "lastName",
                     "placeholder": "",
-                    "required": ""
+                    "required": "",
                 },
             ),
             "email": forms.EmailInput(
                 attrs={
                     "type": "email",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "email",
                     "placeholder": "you@example.com",
-                    "required": ""
+                    "required": "",
                 },
             ),
             "address1": forms.TextInput(
                 attrs={
                     "type": "text",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "address1",
                     "placeholder": "",
-                    "required": ""
+                    "required": "",
                 },
             ),
             "address2": forms.TextInput(
                 attrs={
                     "type": "text",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "address2",
                     "placeholder": "",
-                    "required": ""
+                    "required": "",
                 },
             ),
             "city": forms.TextInput(
                 attrs={
                     "type": "text",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "city",
                     "placeholder": "",
-                    "required": ""
+                    "required": "",
                 },
             ),
             "postal_code": forms.TextInput(
                 attrs={
                     "type": "text",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "postalCode",
                     "placeholder": "",
-                    "required": ""
+                    "required": "",
                 },
             ),
             "country_code": forms.TextInput(
                 attrs={
                     "type": "text",
-                    "class": "form-control", 
+                    "class": "form-control",
                     "id": "countryCode",
                     "placeholder": "",
-                    "required": ""
+                    "required": "",
                 },
             ),
         }

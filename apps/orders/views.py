@@ -13,7 +13,7 @@ def order_create(request):
     if not request.user.is_authenticated:
         messages.info(request, "Please authorizate on system.")
         return redirect("account:login")
-    
+
     cart = Cart(request)
     if request.method == "POST":
         form = OrderCreateForm(request.POST)
@@ -49,13 +49,9 @@ def order_create(request):
     coupon_apply_form = CouponApplyForm()
 
     return render(
-        request, 
-        "orders/create.html", 
-        {
-            "cart": cart, 
-            "form": form,
-            "coupon_apply_form": coupon_apply_form
-        }
+        request,
+        "orders/create.html",
+        {"cart": cart, "form": form, "coupon_apply_form": coupon_apply_form},
     )
 
 
