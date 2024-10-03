@@ -1,3 +1,63 @@
-from django.shortcuts import render  # noqa
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
+from apps.shop.models import Product
+from apps.coupons.forms import CouponApplyForm
+from .cart import Cart
+from .forms import CartAddProductForm as CartUpdateProductForm
+from .forms import CartAddProductForm as CartAddProductForm
 
-# Create your views here.
+
+@require_POST
+def cart_add(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(
+            product=product,
+            qty=cd["quantity"],
+        )
+    return redirect("cart:cart_detail")
+
+
+@require_POST
+def cart_update(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    form = CartUpdateProductForm(request.POST)  
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.update(
+            product=product,
+            qty=cd["quantity"]
+        )
+    return redirect("cart:cart_detail")
+
+
+@require_POST
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.delete(product)
+    return redirect("cart:cart_detail")
+
+
+@require_POST
+def cart_detail(request):
+    cart = Cart(request)
+
+    for item in cart:
+        item["update_quantity_form"] = CartAddProductForm(
+            initial={"quantity": item["quantity"], "override": True}
+        )
+    coupon_apply_form = CouponApplyForm()
+
+    return render(
+        request,
+        "cart/detail.html",
+        {
+            "cart": cart,
+            "coupon_apply_form": coupon_apply_form,
+        }
+    )
