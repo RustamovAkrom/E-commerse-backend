@@ -1,10 +1,10 @@
 from django import forms
-from localflavor.us.forms import USZipCodeField
+from localflavor.us.forms import USZipCodeField # noqa
 from .models import Order
 
 
 class OrderCreateForm(forms.ModelForm):
-    # postal_code = USZipCodeField()
+    # postal_code = USZipCodeField() # noqa
 
     class Meta:
         model = Order

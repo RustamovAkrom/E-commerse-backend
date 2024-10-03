@@ -1,12 +1,12 @@
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required # noqa 
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from apps.cart.cart import Cart
 from apps.coupons.forms import CouponApplyForm
 from .forms import OrderCreateForm
 from .models import Order, OrderItem
-from .tasks import order_created
+from .tasks import order_created # noqa
 
 
 def order_create(request):
