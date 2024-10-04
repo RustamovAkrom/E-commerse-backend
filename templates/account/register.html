@@ -16,38 +16,50 @@
         </div>
   
         <div class="modal-body p-5 pt-0">
-          <form class="">
-
+          <form class="{% url 'account:register' %}" method="post">
+            {% csrf_token %}
             <div class="form-floating mb-3">
-              <input type="text" class="form-control rounded-4" id="floatingInput" placeholder="First name">
+              {{ form.first_name }}
+              <!-- <input type="text" class="form-control rounded-4" id="floatingInput" placeholder="First name"> -->
               <label for="floatingInput">First Name</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="text" class="form-control rounded-4" id="floatingInput" placeholder="Last name">
+              {{ form.last_name }}
+              <!-- <input type="text" class="form-control rounded-4" id="floatingInput" placeholder="Last name"> -->
               <label for="floatingInput">Last Name</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="text" class="form-control rounded-4" id="floatingInput" placeholder="Username">
+              {{ form.username }}
+              <!-- <input type="text" class="form-control rounded-4" id="floatingInput" placeholder="Username"> -->
               <label for="floatingInput">Username</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com">
+              {{ form.email }}
+              <!-- <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com"> -->
               <label for="floatingInput">Email address</label>
             </div>
-
+            
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+              {{ form.phone_number }}
+              <!-- <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com"> -->
+              <label for="floatingInput">Phone Number</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+              {{ form.password }}
+              <!-- <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password"> -->
               <label for="floatingPassword">Password</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+              {{ form.password_confirm }}
+              <!-- <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password"> -->
               <label for="floatingPassword">Password confirm</label>
             </div>
 
-            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Sign up</button>
+            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Sign In</button>
             <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
 
             <hr class="my-4">

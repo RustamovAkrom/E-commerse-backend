@@ -101,8 +101,8 @@
     <div class="d-flex">           
       <form class="card p-2" action="{% url 'coupon:apply' %}" method="post">
         <div class="input-group">
-          {{ coupon_apply_form.code }}
           {% csrf_token %}
+          {{ coupon_apply_form.code }}
           <!-- <input type="text" class="form-control me-2" placeholder="Promo code"> -->
           <button type="submit" class="btn btn-secondary">Apply a coupon</button>
         </div>
