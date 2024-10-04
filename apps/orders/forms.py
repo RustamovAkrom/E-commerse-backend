@@ -1,5 +1,5 @@
 from django import forms
-from localflavor.us.forms import USZipCodeField # noqa
+from localflavor.us.forms import USZipCodeField  # noqa
 from .models import Order
 
 
